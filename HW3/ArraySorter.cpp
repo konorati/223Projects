@@ -106,6 +106,74 @@ void ArraySorter::Merge(int *arr, int i, int k, int j)
 void ArraySorter::QuickSort(int* arr, int n)
 {
 	// You must implement this function
+	QuickSort2(arr, 0, n-1);
+}
+
+void ArraySorter::QuickSort2(int *arr, int left, int right)
+{
+	if((left + 10) <= right)
+	{
+		int pivot = Median3(arr, left, right);
+		int i = left, j = right-1;
+		for(;;)
+		{
+			while(arr[++i] < pivot) 
+			{
+				// Nada mucho
+			}
+			while(pivot < arr[--j]) 
+			{
+				// Empty
+			}
+			
+			if( i < j )
+			{
+				swap(arr, i, j);
+			}
+			else
+			{
+				break;
+			}
+		}
+		swap(arr, i, right-1);
+		QuickSort2(arr, left, i-1);
+		QuickSort2(arr, i+1, right);
+	}
+	else //Run insertion sort
+	{
+		InsertionSort(arr, right+1, left, 0);
+	}
+}
+
+int ArraySorter::Median3(int *arr, int left, int right)
+{
+	int center = (left + right)/2;
+
+	// Order left right and center items
+	if(arr[center] < arr[left])
+	{
+		swap(arr, left, center);
+	}
+	if(arr[left] > arr[right])
+	{
+		swap(arr, left, right);
+	}
+	if(arr[right] < arr[center])
+	{
+		swap(arr, right, center);
+	}
+	//Place pivot (center item) at right-1
+	swap(arr, center, right-1);
+	return arr[right-1];
+}
+
+// Swaps two values in array
+// i & j are indices in array to be swapped
+void ArraySorter::swap(int *arr, int i, int j)
+{
+	int temp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = temp;
 }
 
 // This is implemented for you, but you need to implement the InsertionSort 

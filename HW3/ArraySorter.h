@@ -18,6 +18,9 @@ public:
 	void ShellSort(int* arr, int n, int* gapVals, int gapValsCount);
 	void MergeSort2(int *arr, int i, int j);
 	void Merge(int *arr, int i, int k, int j);
+	void QuickSort2(int *arr, int left, int right);
+	int Median3(int *arr, int left, int right);
+	void swap(int *arr, int i, int j);
 
 	// Utility function that's implemented for you to verify that an 
 	// array is in correct sorted order.
