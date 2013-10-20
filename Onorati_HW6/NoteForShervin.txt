@@ -1,0 +1,4 @@
+I completed the extra credit delete function.
+I believe it is correct although my output is slightly different
+than the given output (though it is equally as valid).
+-Kristin
